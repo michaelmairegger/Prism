@@ -2,6 +2,9 @@
 using Windows.ApplicationModel.Activation;
 using HelloWorld.Services;
 using Prism.Unity.Windows;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using HelloWorld.Views;
 
 namespace HelloWorld
 {
@@ -19,9 +22,14 @@ namespace HelloWorld
             this.InitializeComponent();
         }
 
+        protected override UIElement CreateShell(Frame rootFrame)
+        {
+            rootFrame.Content = new MainPage();
+            return rootFrame;
+        }
+
         protected override Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args)
         {
-            NavigationService.Navigate("Main", null);
             return Task.FromResult<object>(null);
         }
 
